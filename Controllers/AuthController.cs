@@ -21,6 +21,9 @@ namespace LibraryManagementSystem.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequest request)
         {
+            // ✅ Log login attempts
+            Console.WriteLine($"User login attempt: {request.Username} at {DateTime.UtcNow}");
+
             if (request.Username == "admin" && request.Password == "admin123")
             {
                 var token = GenerateJwtToken(UserRoles.Admin);
